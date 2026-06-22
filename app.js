@@ -2,18 +2,35 @@ const csvUrl =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vR1iFv4TIjSckPSECiJWeS3BF59LWaefQam-qr7j4LoswG0_9g2WzlePEVrBamMQqmN3_Hpoa1g-SQX/pub?gid=1488246594&single=true&output=csv";
 
 fetch(csvUrl)
-  .then(response => response.text())
-  .then(csv => {
+.then(response => response.text())
+.then(csv => {
 
     const rows = csv.split("\n");
 
-    const firstRow = rows[0].split(",");
+    const tbody = document.getElementById("leaderboard-body");
 
-    firstRow.forEach((col, i) => {
-      console.log(i, col);
-    });
+    tbody.innerHTML = "";
 
-    alert("Check Console");
+    for (let i = 1; i < rows.length; i++) {
 
-  })
-  .catch(error => console.error(error));
+        const cols = rows[i].split(",");
+
+        if (cols.length < 20) continue;
+
+        const rank = cols[17]?.trim();
+        const player = cols[18]?.trim();
+        const pts = cols[19]?.trim();
+
+        if (!rank || !player || !pts) continue;
+
+        tbody.innerHTML += `
+            <tr>
+                <td>${rank}</td>
+                <td>${player}</td>
+                <td align="right">${pts}</td>
+            </tr>
+        `;
+    }
+
+})
+.catch(error => console.error(error));
