@@ -1,92 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="el">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WC2026 Pool Dashboard</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-<div class="menu">
-  <a href="#">Dashboard</a>
-  <a href="#">Leaderboard</a>
-  <a href="#">Players</a>
-  <a href="#">Statistics</a>
-  <a href="#">Matches</a>
-</div>
-  
-<h1>🏆 WC2026 POOL</h1>
-
-<div class="card-container">
-
-  <div class="card">
-  <h2>🏆 Leader</h2>
-  <p><strong id="leader-name">Loading...</strong></p>
-  <p id="leader-points">0 pts</p>
-</div>
-
-  <div class="card">
-    <h2>🇪🇸 Champion</h2>
-    <p><strong>Spain</strong></p>
-    <p>14 Picks</p>
+  <div class="menu">
+    <a href="#dashboard">Dashboard</a>
+    <a href="#leaderboard">Leaderboard</a>
+    <a href="#players">Players</a>
+    <a href="#statistics">Statistics</a>
+    <a href="#matches">Matches</a>
   </div>
 
-  <div class="card">
-    <h2>⚽ Top Scorer</h2>
-    <p><strong>Mbappé</strong></p>
-    <p>16 Picks</p>
-  </div>
+  <main id="dashboard">
+    <h1>🏆 WC2026 POOL</h1>
 
+    <div class="card-container">
+      <div class="card">
+        <h2>🏆 Leader</h2>
+        <p><strong id="leader-name">Loading...</strong></p>
+        <p id="leader-points">0 pts</p>
+      </div>
 
+      <div class="card">
+        <h2>🇪🇸 Champion</h2>
+        <p><strong id="champion-name">Spain</strong></p>
+        <p id="champion-picks">14 Picks</p>
+      </div>
 
-</div>
+      <div class="card">
+        <h2>⚽ Top Scorer</h2>
+        <p><strong id="top-scorer-name">Mbappé</strong></p>
+        <p id="top-scorer-picks">16 Picks</p>
+      </div>
+    </div>
 
-<h2 style="margin-top:40px;">🏆 Leaderboard</h2>
+    <h2 id="leaderboard" style="margin-top:40px;">🏆 Leaderboard</h2>
 
-<div class="card leaderboard-card">
+    <div class="card leaderboard-card">
+      <table>
+        <thead>
+          <tr>
+            <th align="left">Rank</th>
+            <th align="left">Player</th>
+            <th align="right">Pts</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body"></tbody>
+      </table>
+    </div>
 
-<table>
-<thead>
-<tr>
-<th>Rank</th>
-<th>Player</th>
-<th>Pts</th>
-</tr>
-</thead>
+    <h2 id="statistics" style="margin-top:40px;">📊 Tournament Stats</h2>
 
-<tbody id="leaderboard-body">
-</tbody>
+    <div class="card-container">
+      <div class="card">
+        <h2>📊 Progress</h2>
+        <p><strong id="progress-completed">0 / 72</strong></p>
+        <p id="progress-percent">0%</p>
+      </div>
 
-</table>  
+      <div class="card">
+        <h2>⚽ Latest Result</h2>
+        <p><strong id="latest-result">None</strong></p>
+        <p>Last Match</p>
+      </div>
 
+      <div class="card">
+        <h2>🔥 Surprise</h2>
+        <p><strong id="surprise-match">Iraq 1-0 France</strong></p>
+        <p>Biggest Upset</p>
+      </div>
+    </div>
+  </main>
 
-  
-</div>
-
-  <h2 style="margin-top:40px;">📊 Tournament Stats</h2>
-
-<div class="card-container">
-
-  <div class="card">
-    <h2>📊 Progress</h2>
-    <p><strong>18 / 72</strong></p>
-    <p>Matches Completed</p>
-  </div>
-
-  <div class="card">
-    <h2>⚽ Latest Result</h2>
-    <p><strong>Spain 3-1 Morocco</strong></p>
-    <p>Group Stage</p>
-  </div>
-
-<div class="card">
-  <h2>🔥 Surprise</h2>
-  <p><strong>Iraq 1-0 France</strong></p>
-  <p>Biggest Upset</p>
-</div>
-
-</div>
-
-<script src="app.js"></script>
-
+  <script src="app.js"></script>
 </body>
 </html>
