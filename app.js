@@ -7,11 +7,29 @@ fetch(csvUrl)
 
     const rows = csv.split("\n");
 
-    // Βρες τη στήλη που περιέχει "ΘΕΣΗ"
-    const header = rows[0].split(",");
+    let html = "";
 
-    console.log(header);
+    for(let i = 1; i < rows.length; i++){
 
-    alert("Check Console");
+        const cols = rows[i].split(",");
 
-});
+        const rank = cols[18];
+        const player = cols[19];
+        const pts = cols[20];
+
+        if(rank && player && pts){
+
+            html += `
+            <tr>
+                <td>${rank}</td>
+                <td>${player}</td>
+                <td align="right">${pts}</td>
+            </tr>
+            `;
+        }
+    }
+
+    document.getElementById("leaderboard-body").innerHTML = html;
+
+})
+.catch(error => console.error(error));
