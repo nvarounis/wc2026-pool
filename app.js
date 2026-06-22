@@ -9,7 +9,12 @@ fetch(csvUrl)
 
     const tbody = document.getElementById("leaderboard-body");
 
+    const leaderName = document.getElementById("leader-name");
+    const leaderPoints = document.getElementById("leader-points");
+
     tbody.innerHTML = "";
+
+    let firstPlayer = true;
 
     for (let i = 1; i < rows.length; i++) {
 
@@ -19,9 +24,15 @@ fetch(csvUrl)
 
         const rank = cols[17]?.trim();
         const player = cols[18]?.trim();
-        const pts = cols[19]?.trim();
+        const pts = cols[19]?.trim().replace("\r","");
 
         if (!rank || !player || !pts) continue;
+
+        if (firstPlayer) {
+            leaderName.textContent = player;
+            leaderPoints.textContent = pts + " pts";
+            firstPlayer = false;
+        }
 
         tbody.innerHTML += `
             <tr>
